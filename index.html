@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<!--
+  Google HTML5 slide template
+
+  Authors: Luke Mahé (code)
+           Marcin Wichary (code and design)
+           
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
+  URL: http://code.google.com/p/html5slides/
+-->
+
+<!--
+This code features:
+- inline styles
+- <style> blocks
+- multiple <script> blocks
+- almost no comments
+- <br>'s
+
+I'm a trained proffesional, don't try this at home...
+
+Konrad
+-->
+
+<html>
+  <head>
+    <title>Presentation</title>
+
+    <meta charset='utf-8'>
+    <script src='_/slides.js'></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+    <script src='_/jquery.airport-1.1.source.js'></script>
+    <link rel="stylesheet" href="_/elusive-webfont/css/elusive-webfont.css">
+  </head>
+  
+  <style type='text/css'>
+      .slides.template-mw > article:not(.nobackground):not(.biglogo) {
+        background: url(logo/horizontal.png) 687px 630px no-repeat;
+        background-color: white;
+      }
+
+      .slides > article.problem h2{
+        position: absolute;
+        bottom: 50%;
+        margin-top: -22px;
+      }
+
+        .slides > article.problem .icon{
+          color: rgb(244, 58, 109);
+        }
+  </style>
+  <script>
+    $(document).ready(function(){
+      $('.slides a').attr('target', '_blank');
+    });
+  </script>
+
+  <body style='display: none'>
+
+    <section class='slides layout-regular template-mw'>
+
+      <article>
+        <img src='logo/bluppen_full.png' id='logo_big'/>
+        <img src='_/PHP-logo.png' class='small_pic'/>
+        <img src='_/JS-logo.png' class='small_pic'/>
+        <img src='_/github-logo.png' class='small_pic'/>
+        <img src='_/context-logo.png' class='small_pic'/>
+        <img src='_/stackoverflow-logo.png' class='small_pic'/>
+
+        <style>
+        #logo_big {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          margin-left: -190px;
+          margin-top: -190px;
+          z-index: 10;
+        }
+
+        .small_pic {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          margin-left: -70px;
+          margin-top: -50px;
+          z-index: 0;
+        }
+
+        .small_pic.activate {
+          -webkit-animation-fill-mode: forwards;
+          -webkit-animation-duration: 3s;
+        }
+
+        .small_pic[src="_/PHP-logo.png"]{
+          -webkit-transform: rotate(-7deg);
+          -webkit-animation-name: php-slidein;
+        }
+ 
+        @-webkit-keyframes php-slidein {
+          to {
+            margin-top: 50px;
+            margin-left: -300px;
+          }
+        }
+
+        .small_pic[src="_/JS-logo.png"]{
+          -webkit-transform: rotate(10deg);
+          -webkit-animation-name: js-slidein;
+        }
+ 
+        @-webkit-keyframes js-slidein {
+          to {
+            margin-top: -200px;
+            margin-left: -300px;
+          }
+        }
+
+        .small_pic[src="_/github-logo.png"]{
+          -webkit-animation-name: github-slidein;
+        }
+ 
+        @-webkit-keyframes github-slidein {
+          to {
+            margin-top: -330px;
+            margin-left: -100px;
+          }
+        }
+
+        .small_pic[src="_/context-logo.png"]{
+          -webkit-transform: rotate(-20deg);
+          -webkit-animation-name: context-slidein;
+        }
+ 
+        @-webkit-keyframes context-slidein {
+          to {
+            margin-top: -150px;
+            margin-left: 150px;
+          }
+        }
+
+        .small_pic[src="_/stackoverflow-logo.png"]{
+          -webkit-transform: rotate(20deg);
+          -webkit-animation-name: stackoverflow-slidein;
+        }
+ 
+        @-webkit-keyframes stackoverflow-slidein {
+          to {
+            margin-top: 100px;
+            margin-left: 120px;
+          }
+        }
+
+        .small_pic[src="_/stackoverflow-logo.png"]{
+          -webkit-transform: rotate(20deg);
+          -webkit-animation-name: stackoverflow-slidein;
+        }
+ 
+        @-webkit-keyframes stackoverflow-slidein {
+          to {
+            margin-top: 100px;
+            margin-left: 120px;
+          }
+        }
+        </style>
+        <script>
+        $(document).ready(function(){
+          $('#logo_big').click(function(){
+            $(this).parent().find('.small_pic:not(.activate):eq(0)').addClass('activate');
+          });
+        });
+        </script>
+      </article>
+
+      <article onslideenter="slide2()">
+        <h1 style='margin-top:115px;margin-bottom:115px'>
+          5 common web development problems<br>
+        <div style='font-size:32px'>and how to solve them with Chrome Developer Tools <span id="the_heart" style='color: rgb(244, 58, 109);'>.</span></div>
+        </h1>
+
+        <p>
+          Konrad Dzwinel
+          <br>
+          Jan 10, 2013
+        </p>
+        <script>
+          function slide2() {
+            setTimeout(function(){
+              $('#the_heart').airport(['?', '♥']);
+            }, 5000);
+          }
+        </script>
+      </article>
+
+      <article>
+        <h3>What's DevTools?</h3>
+        <ul class="build">
+          <li>based on the <a href="http://www.webkit.org/">WebKit</a> Web Inspector</li>
+          <li>it's a web-app</li>
+          <li>integrated, not an add-on</li>
+          <li>getting quite popular <span style='font-size: 50%'>(<a href='http://dailyjs.com/2012/12/24/javascript-survey-results/?utm_source=javascriptweekly&utm_medium=email'>dailyJS survey 2012</a>)</span><br><img src='_/wi-stats.png' />
+          </li>
+        </ul>
+      </article>
+
+      <article class='problem'>
+        <h2><span class="icon icon-css"></span> How to debug my CSS and HTML?</h2>
+      </article>
+
+      <article>
+        <h3>
+          Working with style<span style='color: rgb(179, 179, 179)'>s</span>
+        </h3>
+        <ul class='build'>
+          <li>opening, positioning, inspecting, moving around the DOM, searching, undoing</li>
+          <li>"Styles" pane
+            <ul>
+              <li>tabbing &amp; auto-completion</li>
+              <li>modifying the value with arrows</li>
+              <li>add new <span id='ideal' class='classy' style='text-decoration:underline'>style</span></li>
+              <li>color switch &amp; <span style='color:#BADA55'>color</span> picker</li>
+              <li><span id='toggle_me'>toggling element state</span></li>
+            </ul>
+          </li>
+          <li>"Computed Styles" pane</li>
+          <li style='border: solid black 1px; display: inline-block; padding: 10px 0'>"Metrics" pane</li>
+          <li>revision history, saving to disk</li>
+        </ul>
+        <style type='text/css'>
+          #toggle_me:hover {
+            color: red;
+            text-shadow: 0px 0px 20px #000000;
+          }
+        </style>
+      </article>
+
+      <article class='problem'>
+        <h2><span class="icon icon-wrench-alt"></span> How about debugging JavaScript?</h2>
+      </article>
+
+      <article>
+        <h3>
+          Command Line API
+        </h3>
+        <ul class='build'>
+          <li id='ble'><pre>$0</pre></li>
+          <li id='bla'><pre>dir()</pre></li>
+          <li id='test'><pre>inspect()</pre></li>
+          <li><pre>$</pre></li>
+          <li><a href='http://getfirebug.com/wiki/index.php/Command_Line_API'>Firebug Command Line API</a></li>
+		  <li><a href='http://getfirebug.com/wiki/index.php/Console_API'>Firebug Console API</a></li>
+        </ul>
+        <script>
+          $('#ble').data('ascii', "\n"+
+"                        boing         boing         boing\n"+
+"              e-e           . - .         . - .         . - .\n"+
+"             (\\_/)\\       '       `.   ,'       `.   ,'       .\n"+
+"              `-'\\ `--.___,         . .           . .          .\n"+
+"                 '\\( ,_.-'\\\n"+
+"                    \\\\               \"             \"\n"+
+"                    ^'\n"+
+"		  ");
+        </script>
+      </article>
+
+      <article>
+        <h3>
+          The Breaking Point
+        </h3>
+        <ul class='build'>
+          <li>DOM Breakpoints <a href="http://stackoverflow.com/tags">*</a></li>
+          <li>Pretty printing</li>
+          <li>XHR Breakpoints <a href="http://stackoverflow.com/tags/css/topusers">*</a></li>
+          <li id='list_of_listeners'>List of Event Listeners</li>
+          <li>Event Listener Breakpoints <a href="http://phlak.github.com/jColorClock/">*</a></li>
+          <li>Break point actions</li>
+        </ul>
+        <script>
+          document.getElementById('list_of_listeners').onclick = function() {
+            console.log('Click!');
+          }
+        </script>
+      </article>
+
+      <article class='problem'>
+        <h2><span class="icon icon-phone-alt"></span> What about mobile devices?</h2>
+      </article>
+
+      <article>
+        <h3>
+          Override
+        </h3>
+        <ul class='build'>
+          <li>user agent / metrics <a href='http://youtube.com'>*</a></li>
+          <li>geolocation <a href='https://google-developers.appspot.com/maps/documentation/javascript/examples/map-geolocation'>*</a></li>
+          <li>CSS media</li>
+          <li>device orientation <a href='http://www.html5rocks.com/en/tutorials/device/orientation/deviceorientationsample.html'>*</a></li>
+          <li>touch events <a href='http://gregmurray.org/ipad/touch-events.html'>*</a></li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>
+          Remote debugging
+        </h3>
+        <ul class='build'>
+		  <li><pre>adb forward tcp:9222 localabstract:chrome_devtools_remote</pre></li>
+          <li><pre>chrome.exe --remote-debugging-port=9222</pre></li>
+          <li>WebKit Remote Debugging Protocol</li>
+          <li><a href='https://github.com/square/PonyDebugger'>PonyDebugger</a>, <a href='https://github.com/dannycoates/node-inspector'>Node Inspector</a></li>
+          <li>inspecting iPhone from Chrome ?
+            <q style="font-size: 20px;line-height: 41px;margin-top: 50px;">Safari's Web inspector does use the WebKit remote debugging protocol. However, Safari does not use TCP/HTTP as a transport layer, thus making it incompatible with Chrome.</q></li>
+        </ul>
+      </article>
+
+      <article class='problem'>
+        <h2><span class="icon icon-cogs"></span> Is there a way to debug performance issues?</h2>
+      </article>
+
+      <article>
+        <h3>
+          Debugging Performance
+        </h3>
+        <ul class='build'>
+          <li>jank <a href="http://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html">*</a></li>
+          <li>DOM leaks <a href="https://developers.google.com/chrome-developer-tools/docs/heap-profiling-dom-leaks">*</a></li>
+          <li>heap profiling <a href="https://developers.google.com/chrome-developer-tools/docs/heap-profiling-comparison">*</a></li>
+        </ul>
+      </article>
+
+      <article class='problem'>
+        <h2><span class="icon icon-graph"></span> I'd like to optimize my website, can DevTools help me with that?</h2>
+      </article>
+
+      <article>
+        <h3>
+          Speeding things up
+        </h3>
+        <ul class='build'>
+          <li>"Audits" tab</li>
+          <li><a href='https://chrome.google.com/webstore/detail/pagespeed-insights-by-goo/gplegfbjlmmehdoakndmohflojccocli'>PageSpeed</a></li>
+          <li>Network tab HAR export <a href='../nsc_b2c_benchmark_results/index.html'>*</a></li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>
+          But, I don't like (or miss) the feature X !
+        </h3>
+        <ul class='build'>
+          <li onclick='webappBig(event)'>web app </li>
+          <li><a href='https://plus.google.com/115133653231679625609/posts/UZF34wPJXsL'>Skin</a> your DevTools</li>
+          <li>extendable with <a href='https://developer.chrome.com/extensions/devtools.html'>Chrome Extensions API</a></li>
+          <li>easily modifiable<br/><img src='_/own_devtools.png' /></li>
+        </ul>
+        <script>
+          function webappBig(event) {
+            $(event.srcElement).animate({'fontSize': '+=10px'}, 100);
+          }
+        </script>
+      </article>
+
+      <article>
+        <h3>
+          Resources
+        </h3>
+        <ul id='resources_links'>
+          <li><a href='http://paulirish.com/2011/a-re-introduction-to-the-chrome-developer-tools/'>http://paulirish.com/2011/a-re-introduction-to-the-chrome-developer-tools/</a></li>
+          <li><a href='http://www.igvita.com/slides/2012/devtools-tips-and-tricks/'>http://www.igvita.com/slides/2012/devtools-tips-and-tricks/</a></li>
+          <li><a href='http://vimeo.com/53073654'>http://vimeo.com/53073654</a></li>
+          <li><a href='http://www.randomthink.net/blog/2012/11/breakpoint-actions-in-javascript/'>http://www.randomthink.net/blog/2012/11/breakpoint-actions-in-javascript/</a></li>
+          <li><a href='http://vimeo.com/53073654'>http://vimeo.com/53073654</a></li>
+          <li><a href='http://www.youtube.com/watch?feature=player_embedded&v=nOEw9iiopwI'>http://www.youtube.com/watch?feature=player_embedded&v=nOEw9iiopwI</a></li>
+          <li><a href='https://developers.google.com/chrome/mobile/docs/debugging'>https://developers.google.com/chrome/mobile/docs/debugging</a></li>
+		  <li><a href='http://smus.com/extending-chrome-developer-tools/'>http://smus.com/extending-chrome-developer-tools/</a></li>
+        </ul>
+        <style>
+          #resources_links li{
+            text-overflow: ellipsis;
+            height: 36px;
+            display: block;
+            overflow: hidden;
+          }
+        </style>
+      </article>
+
+      <article class='problem'>
+        <h2><span class="icon icon-smiley-alt"></span> Thank You!</h2>
+        <div class='contact_me'>
+          <span class="icon icon-pencil-alt"></span> <a href='mailto:kdzwinel@gmail.com'>kdzwinel@gmail.com</a><br/>
+          <span class="icon icon-github"></span> <a href='https://github.com/kdzwinel'>kdzwinel</a><br/>
+          <span class="icon icon-stackoverflow"></span> <a href='http://stackoverflow.com/users/1143495/konrad-dzwinel'>konrad-dzwinel</a>
+        </div>
+        <style>
+        .contact_me a, .contact_me a:visited, .slides > article.problem .contact_me .icon{
+          color: black;
+          font-size: 75%;
+        }
+        </style>
+      </article>
+
+
+<!-- HERE -->
+
+
+      <article>
+        <q style='margin-top:60px;'>
+          [..] productive developers surround themselves with powerful tools for iterative development and debugging
+        </q>
+        <div class='author'>
+          Paul Irish
+        </div>
+      </article>
+
+    </section>
+
+  </body>
+</html>
